@@ -84,8 +84,10 @@ form button {
 }
 
 form button {
-  background: #111;
+  background: #07ce07;
   color: #fff;
+  width: 25%;
+  margin: 0 auto;
   border: none;
   cursor: pointer;
   transition: background 0.3s;
@@ -94,7 +96,7 @@ form button {
 }
 
 form button:hover {
-  background: #333;
+  background: darkgreen;
 }
 
 footer {

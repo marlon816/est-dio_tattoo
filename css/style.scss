@@ -87,8 +87,10 @@ form {
   }
 
   button {
-    background: $primary-color;
+    background: rgb(7, 206, 7);
     color: $text-light;
+    width: 25%;
+    margin: 0 auto ;
     border: none;
     cursor: pointer;
     transition: background 0.3s;
@@ -96,7 +98,7 @@ form {
     -moz-transition: background 0.3s;
 
     &:hover {
-      background: $secondary-color;
+      background: darkgreen;
     }
   }
 }
