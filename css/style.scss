@@ -89,7 +89,7 @@ form {
   button {
     background: rgb(7, 206, 7);
     color: $text-light;
-    width: 25%;
+    max-width: 200px;
     margin: 0 auto ;
     border: none;
     cursor: pointer;
@@ -218,3 +218,4 @@ footer {
   -webkit-transform: scale(1.05);
   -moz-transform: scale(1.05);
 }
+
