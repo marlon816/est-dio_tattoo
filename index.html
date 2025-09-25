@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Estúdio lucassa_tattoo</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -64,65 +65,67 @@
     </section>
 
 
-    <section class="formulario_tattoo">
-      <h2>Agende sua Tatuagem</h2>
-      <form onsubmit="event.preventDefault(); enviarWhatsApp();">
-        <input type="text" id="nome" placeholder="Seu nome completo" required>
+    <section class="formulario_tattoo" aria-labelledby="titulo-formulario">
+  <h2 id="titulo-formulario">Agende sua Tatuagem</h2>
 
-        <select id="tipoDoenca" required>
-          <option value="">Selecione o tipo de doença</option>
-          <option value="Doença autoimune">Doença autoimune</option>
-          <option value="Diabetes">Diabetes</option>
-          <option value="Outra">Outra</option>
-          <option value="Nenhuma">Nenhuma</option>
-        </select>
+  <form onsubmit="event.preventDefault(); enviarWhatsApp();" autocomplete="on">
+    <!-- Nome -->
+    <label for="nome">Nome completo</label>
+    <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required autocomplete="name">
 
-        <textarea id="descricao" rows="3" placeholder="Descreva a doença (se aplicável)"></textarea>
+    <!-- Tipo de Doença -->
+    <label for="tipoDoenca">Tipo de condição de saúde</label>
+    <select id="tipoDoenca" name="tipoDoenca" required>
+      <option value="">Selecione o tipo de doença</option>
+      <option value="Doença autoimune">Doença autoimune</option>
+      <option value="Diabetes">Diabetes</option>
+      <option value="Outra">Outra</option>
+      <option value="Nenhuma">Nenhuma</option>
+    </select>
 
-        <input type="date" id="data" required>
-        <input type="time" id="hora" required>
+    <!-- Descrição -->
+    <label for="descricao">Descrição da doença (se aplicável)</label>
+    <textarea id="descricao" name="descricao" rows="3" placeholder="Descreva aqui se necessário"></textarea>
 
-        <button type="submit">Enviar via WhatsApp</button>
-      </form>
-    </section>
+    <!-- Data e Hora -->
+    <label for="data">Escolha o dia</label>
+    <input type="date" id="data" name="data" required>
+
+    <label for="hora">Escolha o horário</label>
+    <input type="time" id="hora" name="hora" required>
+
+    <!-- Botão -->
+    <button type="submit" aria-label="Enviar agendamento pelo WhatsApp">Enviar via WhatsApp</button>
+  </form>
+</section>
+
+
+<script>
+function enviarWhatsApp() {
+  const nome = document.getElementById('nome').value;
+  const tipoDoenca = document.getElementById('tipoDoenca').value;
+  const descricao = document.getElementById('descricao').value;
+  const data = document.getElementById('data').value;
+  const hora = document.getElementById('hora').value;
+
+  const mensagem = `Olá, meu nome é ${nome}. Quero agendar uma tatuagem.
+📅 Data: ${data}
+⏰ Hora: ${hora}
+🏥 Condição: ${tipoDoenca}
+${descricao ? `📝 Detalhes: ${descricao}` : ''}`;
+
+  const numero = "558293097819"; // Troque pelo seu número com DDI + DDD
+  const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+  window.open(url, '_blank');
+}
+</script>
+
   </main>
 
-  <div class="modal" id="modal" onclick="fecharModal()">
-    <img id="modalImg" src="" alt="Imagem Ampliada">
-  </div>
+  
 
   <footer>
     <p>© <span id="year"></span> Estúdio lucassa_tattoo — Todos os direitos reservados</p>
   </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    function abrirModal(src) {
-      document.getElementById('modalImg').src = src;
-      document.getElementById('modal').style.display = 'flex';
-    }
-    function fecharModal() {
-      document.getElementById('modal').style.display = 'none';
-    }
-
-    function enviarWhatsApp() {
-      const nome = document.getElementById('nome').value;
-      const tipoDoenca = document.getElementById('tipoDoenca').value;
-      const descricao = document.getElementById('descricao').value;
-      const data = document.getElementById('data').value;
-      const hora = document.getElementById('hora').value;
-
-      const mensagem = `Olá! Gostaria de agendar uma tatuagem.%0A` +
-        `Nome: ${encodeURIComponent(nome)}%0A` +
-        `Doença: ${encodeURIComponent(tipoDoenca)}%0A` +
-        `Descrição: ${encodeURIComponent(descricao)}%0A` +
-        `Data: ${encodeURIComponent(data)}%0A` +
-        `Hora: ${encodeURIComponent(hora)}`;
-
-      const telefone = '+558293097819'; // altere para o número do estúdio
-      window.open(`https://wa.me/${telefone.replace(/[^+0-9]/g, '')}?text=${mensagem}`, '_blank');
-    }
-  </script>
 </body>
 </html>
