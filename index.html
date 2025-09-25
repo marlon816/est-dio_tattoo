@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Estúdio lucassa_tattoo</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Estúdio lucassa_tattoo</h1>
+    <p>Tatuagens autorais • Agendamento fácil via WhatsApp</p>
+
+ 
+<!-- Link redes social  -->
+<a href="https://www.instagram.com/lucassa_tattoo/?igsh=a3k0c2ZzNG4xNDE1#" target="_blank" class="instagram-link">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+  <span>@lucassa_tattoo</span>
+</a>
+
+<a href="https://wa.me/558293097819" target="_blank" class="whatsapp-link">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  <span>Fale comigo no WhatsApp</span>
+</a>
+
+  </header>
+
+  <main>
+    <section class="texto_inicial">
+      <h2>Nossa arte, sua história</h2>
+      <p>Somos um estúdio focado em desenhos autorais e personalização. Trabalhamos com linhas finas, preto & cinza, aquarela e realismo.</p>
+      <ul>
+        <li>Ambiente esterilizado e seguro</li>
+        <li>Agendamento por WhatsApp</li>
+        <li>Arte original e exclusiva</li>
+      </ul>
+    </section>
+
+    <section class="mosaico_imagem">
+      <h3 class="text-center mb-4">Galeria</h3>
+      <div class="gallery">
+        <img src="imagem/a1.jpg" alt="Tattoo 1" onclick="abrirModal(this.src)">
+        <img src="imagem/a2.jpg" alt="Tattoo 2" onclick="abrirModal(this.src)">
+        <img src="imagem/a3.jpg" alt="Tattoo 3" onclick="abrirModal(this.src)">
+        <img src="imagem/a4.jpg" alt="Tattoo 4" onclick="abrirModal(this.src)">
+        <img src="imagem/a5.jpg" alt="Tattoo 5" onclick="abrirModal(this.src)">
+        <img src="imagem/a6.jpg" alt="Tattoo 6" onclick="abrirModal(this.src)">
+        <img src="imagem/a7.jpg" alt="Tattoo 7" onclick="abrirModal(this.src)">
+        <img src="imagem/a8.jpg" alt="Tattoo 8" onclick="abrirModal(this.src)">
+        <img src="imagem/a9.jpg" alt="Tattoo 9" onclick="abrirModal(this.src)">
+        <img src="imagem/a 10.jpg" alt="Tattoo 10" onclick="abrirModal(this.src)">
+        <img src="imagem/a 11.jpg" alt="Tattoo 11" onclick="abrirModal(this.src)">
+        <img src="imagem/a12.jpg" alt="Tattoo 12" onclick="abrirModal(this.src)">
+        <img src="imagem/a13.jpg" alt="Tattoo 13" onclick="abrirModal(this.src)">
+        <img src="imagem/a14.jpg" alt="Tattoo 14" onclick="abrirModal(this.src)">
+        <img src="imagem/a15.jpg" alt="Tattoo 15" onclick="abrirModal(this.src)">
+        <img src="imagem/a16.jpg" alt="Tattoo 16" onclick="abrirModal(this.src)">
+        <img src="imagem/a17.jpg" alt="Tattoo 17" onclick="abrirModal(this.src)">
+        <img src="imagem/a18.jpg" alt="Tattoo 18" onclick="abrirModal(this.src)">
+        <img src="imagem/a19.jpg" alt="Tattoo 19" onclick="abrirModal(this.src)">
+        <img src="imagem/a20.jpg" alt="Tattoo 20" onclick="abrirModal(this.src)">
+        
+      </div>
+    </section>
+
+
+    <section class="formulario_tattoo">
+      <h2>Agende sua Tatuagem</h2>
+      <form onsubmit="event.preventDefault(); enviarWhatsApp();">
+        <input type="text" id="nome" placeholder="Seu nome completo" required>
+
+        <select id="tipoDoenca" required>
+          <option value="">Selecione o tipo de doença</option>
+          <option value="Doença autoimune">Doença autoimune</option>
+          <option value="Diabetes">Diabetes</option>
+          <option value="Outra">Outra</option>
+          <option value="Nenhuma">Nenhuma</option>
+        </select>
+
+        <textarea id="descricao" rows="3" placeholder="Descreva a doença (se aplicável)"></textarea>
+
+        <input type="date" id="data" required>
+        <input type="time" id="hora" required>
+
+        <button type="submit">Enviar via WhatsApp</button>
+      </form>
+    </section>
+  </main>
+
+  <div class="modal" id="modal" onclick="fecharModal()">
+    <img id="modalImg" src="" alt="Imagem Ampliada">
+  </div>
+
+  <footer>
+    <p>© <span id="year"></span> Estúdio lucassa_tattoo — Todos os direitos reservados</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function abrirModal(src) {
+      document.getElementById('modalImg').src = src;
+      document.getElementById('modal').style.display = 'flex';
+    }
+    function fecharModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+
+    function enviarWhatsApp() {
+      const nome = document.getElementById('nome').value;
+      const tipoDoenca = document.getElementById('tipoDoenca').value;
+      const descricao = document.getElementById('descricao').value;
+      const data = document.getElementById('data').value;
+      const hora = document.getElementById('hora').value;
+
+      const mensagem = `Olá! Gostaria de agendar uma tatuagem.%0A` +
+        `Nome: ${encodeURIComponent(nome)}%0A` +
+        `Doença: ${encodeURIComponent(tipoDoenca)}%0A` +
+        `Descrição: ${encodeURIComponent(descricao)}%0A` +
+        `Data: ${encodeURIComponent(data)}%0A` +
+        `Hora: ${encodeURIComponent(hora)}`;
+
+      const telefone = '+558293097819'; // altere para o número do estúdio
+      window.open(`https://wa.me/${telefone.replace(/[^+0-9]/g, '')}?text=${mensagem}`, '_blank');
+    }
+  </script>
+</body>
+</html>
