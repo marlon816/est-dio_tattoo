@@ -114,10 +114,10 @@ form {
     }
 
     // Responsividade extra para telas pequenas
-    @media (max-width: 400px) {
+    @media (max-width: 480px) {
       max-width: 100%;
       font-size: 0.9rem;
-      padding: 5px 7px;
+      padding: 12px 17px;
     }
   }
 }
@@ -235,6 +235,7 @@ footer {
   -webkit-transform: scale(1.05);
   -moz-transform: scale(1.05);
 }
+
 
 
 
